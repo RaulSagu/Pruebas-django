@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block titulo %}Agenda de contactos{% endblock titulo %}</title>
+</head>
+<body>
+	{% block cuerpo %}
+	<h1>Agenda de Contactos</h1>
+	<br/>
+	<table border="1">
+		<caption align="top">CRUD CREADO POR</caption>
+		<td>Raul Sarmiento Guette</td>
+		<td>Cristian Barrios Tanos</td>
+		<td><a href="{% url 'crear_personas' %}">Nuevo Contacto</a></td>
+	</table>
+	<br/>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Nombres</th>
+				<th>Apellidos</th>
+				<th>Direeción</th>
+				<th>Correo</th>
+				<th>Opción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for persona in personas %}
+				<tr>
+					<td>{{ persona.nombre }}</td>
+					<td>{{ persona.apellido }}</td>
+					<td>{{ persona.direccion }}</td>
+					<td>{{ persona.correo }}</td>
+					<td><a href="{% url 'editar_persona' persona.id %}">Editar</a> | <a href="{% url 'eliminar_persona' persona.id %}">Eliminar</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endblock cuerpo %}
+</body>
+</html>

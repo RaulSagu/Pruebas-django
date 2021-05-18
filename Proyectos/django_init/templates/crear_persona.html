@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block titulo %} Formulario de Contactos {% endblock titulo %}
+{% block cuerpo %}
+	<form method="post">
+		<!--{{form.as_p}} aqui los muestra todos asp_p los muestra en columna-->
+		{% csrf_token %} <!--Con esta linea validamos quien es el usuario que tiene el token-->
+		<table border="1">
+			<caption align="top">Crear Contactos</caption>
+			<tr>
+				<td colspan="1"><a href="{% url 'index' %}">Volvel al Inicio<a/><td/>
+			</tr>
+			<tr>
+				<td>{{form.nombre.label}}</td>
+				<td>{{form.nombre}}</td>
+			</tr>
+			<tr>
+				<td>{{form.apellido.label}}</td>
+				<td>{{form.apellido}}</td>
+			</tr>
+			<tr>
+				<td>{{form.direccion.label}}</td>
+				<td>{{form.direccion}}</td>
+			</tr>
+			<tr>
+				<td>{{form.correo.label}}</td>
+				<td>{{form.correo}}</td>
+			</tr>
+		</table>
+		<button type="submit">Realizar Proceso</button>
+	</form>
+
+{% endblock cuerpo %}
